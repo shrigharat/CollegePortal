@@ -1,23 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+
+import Banner from "./components/landing-page/banner/banner.component";
+import SocialProof from "./components/landing-page/social/social-proof.component";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className="banner-cmp"><Banner/></section>
+      <section className="one"><SocialProof/></section>
+      <section className="two">World!</section>
     </div>
   );
 }

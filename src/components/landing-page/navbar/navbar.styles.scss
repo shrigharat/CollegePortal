@@ -1,0 +1,33 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // background-color: skyblue;
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: white;
+  }
+
+  .others {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 40%;
+
+    .nav-element {
+      text-decoration: none;
+      color: #030047;
+      font-size: 1.1rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.35rem;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #030047;
+        color: white;
+      }
+    }
+  }
+}
