@@ -3,12 +3,50 @@
   height: 100vh;
   background-color: #030047;
   display: flex;
-  align-items:center;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
 
   .wrapper {
-    width: 80%;
-    height: 80%;
-    background-color:skyblue;
+    width: 95%;
+    height: 90%;
+    position: relative;
+    display: flex;
+
+    .section-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      width: 40%;
+      height: 100%;
+      font-size: 2rem;
+      color: white;
+      z-index: 2;
+      padding: 0 3rem;
+      word-spacing: .5rem;
+    }
+
+    .testimonial-wrapper {
+      width: 60%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .testimonial {
+        width: 100%;
+        padding: 1rem 2rem;
+      }
+    }
+
+    .testimonial-img {
+      position: absolute;
+      height: auto;
+      width: 250px;
+      z-index: 1;
+      left: 15rem;
+      top: 2rem;
+      opacity: 0.8;
+    }
   }
 }

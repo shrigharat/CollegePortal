@@ -1,0 +1,48 @@
+.carousel-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  padding: 2rem 1rem;
+  border-radius: 0.75rem;
+  margin: 1.5rem;
+  height: 100%;
+
+  .quotes {
+    height: auto;
+    width: 100px;
+    position: absolute;
+    right: 1rem;
+    top: 2rem;
+    opacity: 0.8;
+  }
+
+  .card-header {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items:center;
+    margin-bottom: 1rem;
+
+    .person-name {
+      margin-left: 1rem;
+      color: #030047;
+      font-weight: 600;
+      font-size: 1.2rem;
+      width: max-content;
+    }
+
+    img {
+      height: 80px;
+      width: 80px;
+      border-radius: 50%;
+      border: 5px solid #ff7f50;
+    }
+  }
+
+  .message {
+    text-align: left;
+  }
+}
