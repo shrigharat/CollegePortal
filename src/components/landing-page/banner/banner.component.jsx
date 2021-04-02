@@ -1,7 +1,6 @@
 import React from "react";
 
 import Navbar from "../navbar/navbar.component";
-import { Button } from "@material-ui/core";
 
 import "./banner.styles.scss";
 import bannerImg from "../../../assets/images/034.png";

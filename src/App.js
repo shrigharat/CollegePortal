@@ -1,14 +1,15 @@
 import './App.scss';
 
-import Banner from "./components/landing-page/banner/banner.component";
-import SocialProof from "./components/landing-page/social/social-proof.component";
+import {Switch, Route} from "react-router-dom";
+
+import LandingPage from "./pages/LandingPage/landing.page";
 
 function App() {
   return (
     <div className="App">
-      <section className="banner-cmp"><Banner/></section>
-      <section className="one"><SocialProof/></section>
-      <section className="two">World!</section>
+      <Switch>
+        <Route path="/" exact component={LandingPage}/>
+      </Switch>
     </div>
   );
 }

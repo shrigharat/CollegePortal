@@ -1,24 +1,5 @@
 .App {
-  text-align: center;
-
-  height: 100vh;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
   
-  .banner-cmp {
-    scroll-snap-align: start;
-  }
-
-  .one {
-    scroll-snap-align: start;
-  }
-  
-  .two {
-    background-color: green;
-    height: 100vh;
-    width: 100%;
-    scroll-snap-align: start;
-  }
 }
 
 

@@ -1,0 +1,23 @@
+.landing-page {
+  text-align: center;
+
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+
+  // section {
+  //   scroll-snap-align: start;
+  // }
+  
+  .banner-cmp {
+    scroll-snap-align: start;
+  }
+
+  .one {
+    scroll-snap-align: start;
+  }
+  
+  .two {
+    scroll-snap-align: start;
+  }
+}

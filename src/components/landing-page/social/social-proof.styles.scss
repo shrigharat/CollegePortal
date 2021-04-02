@@ -12,6 +12,13 @@
     position: relative;
     display: flex;
 
+    .slick-dots {
+      
+      button::before {
+        color: #FF7F50;
+      }
+    }
+
     .section-title {
       display: flex;
       justify-content: center;
@@ -41,8 +48,8 @@
 
     .testimonial-img {
       position: absolute;
-      height: auto;
-      width: 250px;
+      height: 240px;
+      width: auto;
       z-index: 1;
       left: 15rem;
       top: 2rem;
