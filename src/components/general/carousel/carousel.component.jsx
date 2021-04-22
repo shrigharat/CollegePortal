@@ -2,9 +2,19 @@ import React from "react";
 import Slider from "react-slick";
 
 import CarouselCard from "./carousel-card";
+import MeetingCard from "./meeting-card.component";
 
-const Carousel = ({itemList}) => {
-  const settings = {
+function getItems(itemType, itemList) {
+  switch (itemType) {
+    case "testimonial":
+      return itemList.map((item) => <CarouselCard item={item} />);
+    default:
+      return itemList.map((item) => <MeetingCard item={item}/>);
+  }
+}
+
+const Carousel = ({ itemList, itemType, customSettings }) => {
+  const settings = customSettings || {
     dots: true,
     infinite: true,
     speed: 500,
@@ -12,17 +22,9 @@ const Carousel = ({itemList}) => {
     slidesToScroll: 1,
     autoplay: true,
     arrows: true,
-    dotsClass: 'slick-dots'
+    dotsClass: "slick-dots",
   };
-  return (
-    <Slider {...settings}>
-      {
-        itemList.map(
-          item => <CarouselCard item={item}/>
-        )
-      }
-    </Slider>
-  );
+  return <Slider {...settings}>{getItems(itemType, itemList)}</Slider>;
 };
 
 export default Carousel;

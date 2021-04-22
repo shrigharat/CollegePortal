@@ -25,6 +25,10 @@ const Register = () => {
         <button className="signup-btn">Sign Up</button>
       </div>
     </div>
+
+    <footer>
+      Copyright &#169; 2021 College Portal
+    </footer>
   </div>;
 }
 

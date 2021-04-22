@@ -1,12 +1,15 @@
 .register-component {
+  background-color: white;
+  padding-top: 3rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
   h1 {
     font-size: 1.8rem;
+    color:#030047;
   }
 
   .register {
@@ -36,6 +39,11 @@
       h1 {
         font-weight: 600;
         font-size: 1.3rem;
+        color:#030047;
+      }
+
+      p {
+        color: rgb(104, 104, 104);
       }
 
       img {
@@ -62,5 +70,14 @@
         }
       }
     }
+  }
+
+  footer {
+    width: 100%;
+    height: 3rem;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
