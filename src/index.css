@@ -32,3 +32,21 @@ code {
     transform: scale(1);
   }
 }
+
+@keyframes increase {
+  from {
+    height: 0;
+  }
+  to {
+    height: 110px;
+  }
+}
+
+@keyframes blink {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

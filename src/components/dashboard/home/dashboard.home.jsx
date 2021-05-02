@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import "./dashboard.home.styles.scss";
 import Carousel from "../../general/carousel/carousel.component";
-import { meetings } from "./meetings";
+import { meetings, tasks } from "./meetings";
 
 const meetingsCarouselSettings = {
   dots: false,
@@ -24,6 +24,16 @@ const DashboardHome = () => {
           <Carousel
             itemList={meetings}
             itemType="meeting"
+            customSettings={meetingsCarouselSettings}
+          />
+        </div>
+      </div>
+      <div className="collection">
+        <span className="collection-header">Upcoming tasks</span>
+        <div className="collection-slider">
+          <Carousel
+            itemList={tasks}
+            itemType="task"
             customSettings={meetingsCarouselSettings}
           />
         </div>

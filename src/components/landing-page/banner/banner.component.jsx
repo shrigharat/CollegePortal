@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 import Navbar from "../navbar/navbar.component";
 
@@ -15,8 +16,8 @@ const Banner = () => {
             The only place you'll need for your college.
           </div>
           <div className="action">
-            <button className="signup-btn">Sign Up</button>
-            <button className="login-btn">Log In</button>
+            <Link to="/signup" className="signup-btn">Sign Up</Link>
+            <Link to="/signup" className="login-btn">Log In</Link>
           </div>
         </div>
         <img className="image" src={bannerImg} alt="" />

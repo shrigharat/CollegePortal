@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
-} from "@chakra-ui/react";
+import useModal from "../../general/modal/modal.component";
 
+import {
+  Stack,
+  Box,
+  Input,
+  InputLeftAddon,
+  InputGroup,
+} from "@chakra-ui/react";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 
 const StyledGrid = styled.div`
@@ -24,9 +23,9 @@ const StyledGrid = styled.div`
     border: 2px solid #7373f8;
     cursor: pointer;
     display: flex;
-    justify-content:flex-start;
+    justify-content: flex-start;
     align-items: center;
-    gap: .4rem;
+    gap: 0.4rem;
   }
 `;
 
@@ -37,65 +36,457 @@ const Subtitle = styled.span`
 `;
 
 const Participants = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [ clickedStudent, setClickedStudent ] = useState({});
+  const [onOpen, setComponent, Modal] = useModal();
+  const [clickedStudent, setClickedStudent] = useState({});
   const participants = [
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Shrishail Gharat", rollNo: 55, UID: "118CP1417A", email: "gharatshri014@gmail.com", division: "A", class: "3rd Year Computer Engineering" },
-    { name: "Shruti Gharat", rollNo: 53, UID: "118CP1517A", email: "gharatshruti99912@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Lee Kwang Soo", rollNo: 54, UID: "118CP1427A", email: "lksmagic@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
-    { name: "Joen So Min", rollNo: 51, UID: "118CP1418A", email: "jeonsobari@gmail.com", division: "A", class: "3rd Year Computer Engineering"  },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shrishail Gharat",
+      rollNo: 55,
+      UID: "118CP1417A",
+      email: "gharatshri014@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Shruti Gharat",
+      rollNo: 53,
+      UID: "118CP1517A",
+      email: "gharatshruti99912@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Lee Kwang Soo",
+      rollNo: 54,
+      UID: "118CP1427A",
+      email: "lksmagic@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
+    {
+      name: "Joen So Min",
+      rollNo: 51,
+      UID: "118CP1418A",
+      email: "jeonsobari@gmail.com",
+      division: "A",
+      class: "3rd Year Computer Engineering",
+    },
   ];
 
   return (
@@ -104,7 +495,10 @@ const Participants = () => {
         <div
           className="student-tile"
           onClick={() => {
-            setClickedStudent(student);
+            setComponent({
+              title: "Student details",
+              body: <StudentInfo student={student} />,
+            });
             onOpen();
           }}
         >
@@ -112,29 +506,40 @@ const Participants = () => {
           {student.name}
         </div>
       ))}
-      <Modal isOpen={isOpen} onClose={onClose} size="md">
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>
-            <div>{clickedStudent.name}</div>
-          </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <div className="description">UID - {clickedStudent.UID}
-              <br />
-              Email - {clickedStudent.email}
-              <br />
-              Roll no - {clickedStudent.rollNo}
-              <br />
-              Class - {clickedStudent.class}
-              <br />
-              Division - {clickedStudent.division}
-              <br /><br />
-            </div>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+      {Modal}
     </StyledGrid>
+  );
+};
+
+const StudentInfo = ({ student }) => {
+  return (
+    <Stack spacing=".5rem">
+      <InputGroup>
+        <InputLeftAddon children={"Full name"} />
+        <Input value={student.name} />
+      </InputGroup>
+      <InputGroup>
+        <InputLeftAddon isReadOnly children={"Class"} />
+        <Input value={student.class} />
+      </InputGroup>
+      <InputGroup>
+        <InputLeftAddon children={"Division"} />
+        <Input value={student.division} />
+      </InputGroup>
+      <InputGroup>
+        <InputLeftAddon children={"Roll no"} />
+        <Input value={student.rollNo} />
+      </InputGroup>
+      <InputGroup>
+        <InputLeftAddon children={"UID"} />
+        <Input value={student.UID} />
+      </InputGroup>
+      <InputGroup>
+        <InputLeftAddon children={"Email"} />
+        <Input value={student.email} />
+      </InputGroup>
+      <Box />
+    </Stack>
   );
 };
 

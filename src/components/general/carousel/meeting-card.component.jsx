@@ -24,7 +24,7 @@ const MeetingDiv = styled.div`
 
     .meeting-name {
       width: 80%;
-      font-weight: 500;
+      font-weight: 600;
     }
   }
 

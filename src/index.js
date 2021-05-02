@@ -4,8 +4,14 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { extendTheme } from "@chakra-ui/react"
+import { extendTheme } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
+
+const persistor = persistStore(store);
 
 const theme = extendTheme({
   styles: {
@@ -14,8 +20,8 @@ const theme = extendTheme({
       body: {
         bg: "gray.400",
         color: "black",
-        fontFamily: 'Poppins, sans-serif',
-        fontSize: "16px"
+        fontFamily: "Poppins, sans-serif",
+        fontSize: "16px",
       },
       // styles for the `a`
     },
@@ -25,16 +31,20 @@ const theme = extendTheme({
       50: "#6060FF",
       100: "#6868e6",
       500: "#7575f8",
-      600: "#4445AA"
-    }
-  }
-})
+      600: "#4445AA",
+    },
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ChakraProvider theme={theme}>
-        <App />
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <App />
+          </PersistGate>
+        </Provider>
       </ChakraProvider>
     </BrowserRouter>
   </React.StrictMode>,
